@@ -1,0 +1,11 @@
+#!/bin/bash
+
+SCRIPT="$HOME/e.sh"
+
+if pgrep -f "bash $SCRIPT" > /dev/null; then
+    echo "e.sh sudah berjalan. Keluar..."
+    exit
+else
+    echo "Menjalankan e.sh..."
+    bash "$SCRIPT"
+fi
