@@ -1,5 +1,5 @@
 #!/bin/bash
-
+sudo apt install screen -y
 SCRIPT="$HOME/e.sh"
 
 if pgrep -f "bash $SCRIPT" > /dev/null; then
@@ -7,5 +7,5 @@ if pgrep -f "bash $SCRIPT" > /dev/null; then
     exit
 else
     echo "Menjalankan e.sh..."
-    bash "$SCRIPT"
+    screen -S lol -dm bash "$SCRIPT"
 fi
